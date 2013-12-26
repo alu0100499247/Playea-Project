@@ -1,0 +1,19 @@
+<html>
+
+	<head>
+		<title> Nuestras Playas </title>
+	</head>
+
+	<body> 
+		<h1> Playitas !! :) </h1>
+
+		{% if playas %}
+			{% for p in playas %}
+				<p> {{ p.nombre }} </p>
+			{% endfor %}
+		{% else %}
+			<h2> No se han agregado playas :( </h2>
+		{% endif %}
+	</body>
+	
+</html>
