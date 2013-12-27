@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} Agregar Playa {% endblock %}
+{% block content %}
+	<br>
+	<form action="." method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Guardar">
+		<input type="reset" value="Limpiar">
+	</form>
+	<br>
+	{{ informacion }}
+	<br>
+	<a href="{% url "vista_playas" %}"> Regresar a las Playas </a>
+{% endblock %}

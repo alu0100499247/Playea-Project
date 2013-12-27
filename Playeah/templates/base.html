@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+		<TITLE> {% block title %} Pla-Yeah!! {% endblock %} </TITLE>
+	<HEAD>
+
+	<BODY>
+		<HEADER>
+			<H1> Pla-Yeah! Todo sobre nuestras Playas ;) </H1>
+			<NAV>
+				<a href="{% url "vista_principal" %}"> Inicio </a>
+				<a href="{% url "vista_playas" %}"> Playas </a>
+				<a href="{% url "vista_contacto" %}"> Contacto </a>
+				<a href="{% url "vista_about" %}"> Acerca de </a>
+			</NAV>
+		</HEADER>
+
+		<SECTION>
+			{% block content %}
+			
+			{% endblock %}
+		</SECTION>
+	</BODY>
+</HTML>
+
