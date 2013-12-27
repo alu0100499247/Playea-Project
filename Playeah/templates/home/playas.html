@@ -1,19 +1,16 @@
-<html>
+{% extends 'base.html' %}
+{% block title %} Nuestras Playas {% endblock %}
+{% block content %}
+	<br>
+	<h1> Playitas !! :) </h1>
 
-	<head>
-		<title> Nuestras Playas </title>
-	</head>
-
-	<body> 
-		<h1> Playitas !! :) </h1>
-
-		{% if playas %}
-			{% for p in playas %}
-				<p> {{ p.nombre }} </p>
-			{% endfor %}
-		{% else %}
-			<h2> No se han agregado playas :( </h2>
-		{% endif %}
-	</body>
-	
-</html>
+	{% if playas %}
+		{% for p in playas %}
+			<p> {{ p.nombre }} </p>
+		{% endfor %}
+	{% else %}
+		<h2> No se han agregado playas :( </h2>
+	{% endif %}
+	<br>
+	<a href="{% url "vista_agregar_playa" %}"> Agregar Playa </a> 
+{% endblock %}
