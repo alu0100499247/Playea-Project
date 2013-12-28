@@ -11,5 +11,7 @@
 		<h2> No se han agregado playas :( </h2>
 	{% endif %}
 	<br>
-	<a href="{% url "vista_agregar_playa" %}"> Agregar Playa </a> 
+	{% if user.is_authenticated %}
+		<a href="{% url "vista_agregar_playa" %}"> Agregar Playa </a> 
+	{% endif %}
 {% endblock %}

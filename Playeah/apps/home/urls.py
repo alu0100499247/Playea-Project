@@ -5,4 +5,6 @@ urlpatterns = patterns('Playeah.apps.home.views',
 	url(r'^about/$','about_view',name='vista_about'),
 	url(r'^playas/$','playas_view',name='vista_playas'),
 	url(r'^contacto/$','contacto_view',name='vista_contacto'),
+	url(r'^login/$','login_view',name='vista_login'),
+	url(r'^logout/$','logout_view',name='vista_logout'),
 )
