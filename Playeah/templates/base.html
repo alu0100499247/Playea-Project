@@ -1,25 +1,28 @@
 <!DOCTYPE HTML>
-<HTML>
-	<HEAD>
-		<TITLE> {% block title %} Pla-Yeah!! {% endblock %} </TITLE>
-	<HEAD>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> {% block title %} Pla-Yeah!! {% endblock %} </title>
+		{% block css %} <link rel="stylesheet" href="/media/css/estilo.css"> {% endblock %}
+	<head>
 
-	<BODY>
-		<HEADER>
-			<H1> Pla-Yeah! Todo sobre nuestras Playas ;) </H1>
-			<NAV>
+	<body>
+		<header>
+			<img src="/media/images/django.gif"/>
+			<h1> Pla-Yeah! Todo sobre nuestras Playas ;) </h1>
+			<nav>
 				<a href="{% url "vista_principal" %}"> Inicio </a>
 				<a href="{% url "vista_playas" %}"> Playas </a>
 				<a href="{% url "vista_contacto" %}"> Contacto </a>
 				<a href="{% url "vista_about" %}"> Acerca de </a>
-			</NAV>
-		</HEADER>
+			</nav>
+		</header>
 
-		<SECTION>
+		<section>
 			{% block content %}
 			
 			{% endblock %}
-		</SECTION>
-	</BODY>
-</HTML>
+		</section>
+	</body>
+</html>
 
