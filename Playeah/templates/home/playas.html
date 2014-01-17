@@ -2,16 +2,20 @@
 {% block title %} Nuestras Playas {% endblock %}
 {% block content %}
 	<h1> Playitas !! :) </h1>
+	<br>
 
 	{% if playas %}
 		{% for p in playas %}
-			<p> {{ p.nombre }} </p>
+			<p><a href="/playa/{{ p.id }}/"> {{ p.nombre }} </a></p>
 		{% endfor %}
 	{% else %}
 		<h2> No se han agregado playas :( </h2>
 	{% endif %}
+
 	<br>
+	
 	{% if user.is_authenticated %}
 		<a href="{% url "vista_agregar_playa" %}"> Agregar Playa </a> 
 	{% endif %}
+
 {% endblock %}

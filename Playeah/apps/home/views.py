@@ -66,3 +66,8 @@ def login_view(request):
 def logout_view(request):
 	logout(request)
 	return HttpResponseRedirect('/')
+
+def SinglePlaya_view(request, id_playa):
+	playita = playa.objects.get(id=id_playa)
+	ctx = {'playa':playita}
+	return render_to_response('home/SinglePlaya.html',ctx,context_instance=RequestContext(request))

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %} Nuestras Playas {% endblock %}
+{% block content %}
+
+	<h1> {{ playa.nombre }} </h1><br>
+	<p> {{ playa.descripcion }} </p> 
+	<br><br>
+	<a href="/playas/"> Regresar a la lista </a>
+
+{% endblock %}

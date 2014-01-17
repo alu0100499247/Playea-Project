@@ -7,4 +7,5 @@ urlpatterns = patterns('Playeah.apps.home.views',
 	url(r'^contacto/$','contacto_view',name='vista_contacto'),
 	url(r'^login/$','login_view',name='vista_login'),
 	url(r'^logout/$','logout_view',name='vista_logout'),
+	url(r'^playa/(?P<id_playa>.*)/$','SinglePlaya_view',name='vista_single_playa'),
 )
