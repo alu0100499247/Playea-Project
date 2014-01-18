@@ -145,6 +145,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'Playeah.apps.Playeah',
     'Playeah.apps.home',
+    'Playeah.apps.WebServices.wsPlayas',
 )
 
 # A sample logging configuration. The only tangible logging

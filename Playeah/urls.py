@@ -17,5 +17,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^',include('Playeah.apps.home.urls')),
     url(r'^',include('Playeah.apps.Playeah.urls')),
+    url(r'^',include('Playeah.apps.WebServices.wsPlayas.urls')),
     url(r'^media/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.MEDIA_ROOT}),
 )
