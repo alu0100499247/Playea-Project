@@ -15,12 +15,12 @@ class playa(models.Model):
 		ruta = "MultimediaData/Playa/%s/%s"%(self.nombre,str(filename))
 		return ruta
 
-		
+
 	nombre		= models.CharField(max_length=200)
 	ubicacion	= models.CharField(max_length=200)
 	descripcion	= models.TextField(max_length=2000)
 	status		= models.BooleanField(default=True)
-	imagen		= models.ImageField(upload_to=url)
+	imagen		= models.ImageField(upload_to=url,null=True,blank=True)
 
 	def __unicode__(self):
 		return self.nombre
