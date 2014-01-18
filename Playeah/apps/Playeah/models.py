@@ -10,10 +10,17 @@ class usuario(models.Model):
 		return NombreCompleto
 
 class playa(models.Model):
+
+	def url(self, filename):
+		ruta = "MultimediaData/Playa/%s/%s"%(self.nombre,str(filename))
+		return ruta
+
+		
 	nombre		= models.CharField(max_length=200)
 	ubicacion	= models.CharField(max_length=200)
 	descripcion	= models.TextField(max_length=2000)
 	status		= models.BooleanField(default=True)
+	imagen		= models.ImageField(upload_to=url)
 
 	def __unicode__(self):
 		return self.nombre
