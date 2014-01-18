@@ -5,6 +5,7 @@ from Playeah.apps.home.forms import ContactForm, LoginForm
 from django.core.mail import EmailMultiAlternatives	# Envio HTML
 from django.contrib.auth import login, logout, authenticate
 from django.http import HttpResponseRedirect
+from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
 def index_view(request):
 	return render_to_response('home/index.html',context_instance=RequestContext(request))
@@ -14,9 +15,18 @@ def about_view(request):
 	ctx = {'msg':mensaje}
 	return render_to_response('home/about.html',ctx,context_instance=RequestContext(request))
 
-def playas_view(request):
+def playas_view(request, pagina):
 	playita = playa.objects.filter(status=True) # Select * from Playeah_playas where status = True
-	ctx = {'playas':playita}
+	paginator = Paginator(playita, 1)			# Playas por pagina
+	try:
+		page = int(pagina)						# Pasamos la variable pagina a entero
+	except:
+		page = 1								# En caso de que pasen un valor erroneo
+	try:
+		playas = paginator.page(page)			# Devuelve la pagina numero "page"
+	except (EmptyPage, InvalidPage):
+		playas = paginator.page(paginator.num_pages)	# Redireccionamos a la ultima pagina
+	ctx = {'playas':playas}
 	return render_to_response('home/playas.html',ctx,context_instance=RequestContext(request))
 
 def contacto_view(request):

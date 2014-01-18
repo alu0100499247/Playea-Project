@@ -13,7 +13,29 @@
 	{% endif %}
 
 	<br>
-	
+
+	{% if playas %}
+		<a href="/playas/page/1"> << </a>
+
+		{% if playas.has_previous %}
+			<a href="/playas/page/{{ playas.previous_page_number }}/"> Ant </a>
+		{% else %}
+			<a href="#"> Ant </a>
+		{% endif %}
+
+		{% if playas.has_next %}
+			<a href="/playas/page/{{ playas.next_page_number }}/"> Sig </a>
+		{% else %}
+			<a href="#"> Sig </a>
+		{% endif %}
+
+		<a href="/playas/page/{{ playas.paginator.num_pages }}"> >> </a>
+		<br>
+		<h4> Página {{ playas.number }} de {{ playas.paginator.num_pages }} </h4>
+	{% endif %}
+
+	<br><br>
+
 	{% if user.is_authenticated %}
 		<a href="{% url "vista_agregar_playa" %}"> Agregar Playa </a> 
 	{% endif %}
