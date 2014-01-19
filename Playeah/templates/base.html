@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="es">
 	<head>
 		<meta charset="utf-8">
-		<title> {% block title %} Bienvenidos a Pla-Yeah!! {% endblock %} </title>
+		<title> Bienvenidos a Pla-Yeah!! </title>
 		<link rel="stylesheet" href="/media/bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" href="/media/bootstrap/css/bootstrap-responsive.css">
 		<script src="/media/js/jquery.js"></script>
@@ -16,6 +16,22 @@
 				padding: 9px 0;
 			}
 		</style>
+		<script type="text/javascript">
+			$(document).on('ready',function(){
+				$.ajax({
+					type:"GET",
+					contentType:"application/json; charset=utf-8",
+					dateType:"json",
+					url:"/ws/playas/",
+					success:function(response){
+						var i = (response.length-1)-2;
+						for(i;i<=(response.length-1);i++){
+							$('#PlayasNuevas').append("<li>"+response[i].fields.nombre+"</li>");
+						}
+					}
+				});
+			});
+		</script>
 	</head>
 
 	<body>
@@ -36,50 +52,47 @@
 		</div><!--/navbar-->
 
 		<div class="container-fluid">
-
 			<div class="row-fluid">
+
 				<div class="span9">	
 					<div class="hero-unit">
 						{% block content %}
 
 						{% endblock %}
 					</div><!--/hero-unit-->
-			</div><!--/row-fluid-->
+				</div><!--/span9-->	
 
-			{% if user.is_authenticated %}
 				<div class="span3">
+
+					{% if user.is_authenticated %}
+						<div class="well sidebar-nav">
+							<ul class="nav nav-list">
+								<li class="nav-header"> Usuario on-line </li>
+								<p align="center">
+									Usuario {{ user.username }}
+								</p>
+								{% if user.get_profile.photo %}
+									<center><img align="center" src="/media/{{ user.get_profile.photo }}" width="100px" heigth="100px"/></center>
+								{% endif %}
+							</ul>
+						</div><!--/well-->
+					{% endif %}
+
 					<div class="well sidebar-nav">
-						<ul class="nav nav-list">
-							<li class="nav-header"> Usuario on-line </li>
-							<p align="center">
-								Usuario {{ user.username }}
-							</p>
-							{% if user.get_profile.photo %}
-								<center><img align="center" src="/media/{{ user.get_profile.photo }}" width="100px" heigth="100px"/></center>
-							{% endif %}
+						<ul class="nav nav-list" id="PlayasNuevas">
+							<li class="nav-header"> Últimas Playas </li>
+							
 						</ul>
 					</div><!--/well-->
+					<img src="/media/images/django.gif"/>
+
 				</div><!--/span3-->
-			{% endif %}
-			
-			<div class="span3">
-				<div class="well sidebar-nav">
-					<ul class="nav nav-list">
-						<li class="nav-header"> Últimas Playas </li>
-						<br>
-						<p align="justify">
-							Últimas playas añadidas...
-						</p>
-					</ul>
-				</div><!--/well-->
-				<img src="/media/images/django.gif"/>
-			</div><!--/span3-->
+			</div><!--/row-fluid-->
+
+			<footer>
+				<p>&copy; Open Project Pla-Yeah 2014 </p>
+			</footer>
 
 		</div><!--/container-fluid-->
-
-		<footer>
-			<p>&copy; Open Project Pla-Yeah 2014 </p>
-		</footer>
-
 	</body>
 </html>
