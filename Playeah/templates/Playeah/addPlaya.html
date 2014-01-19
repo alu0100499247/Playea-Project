@@ -1,15 +1,11 @@
 {% extends 'base.html' %}
 {% block title %} Agregar Playa {% endblock %}
 {% block content %}
-	<br>
 	<form action="." method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
 		{{ form.as_p }}
-		<input type="submit" value="Guardar">
-		<input type="reset" value="Limpiar">
+		<button class="btn btn-primary" type="submit"> Guardar </button>
+		<button class="btn btn-primary" type="reset"> Limpiar </button>
 	</form>
-	<br>
-	{{ informacion }}
-	<br>
-	<a href="/playas/page/1"> Regresar a las Playas </a>
+	<a class="btn btn-primary" href="/playas/page/1"> Regresar a las Playas </a>
 {% endblock %}

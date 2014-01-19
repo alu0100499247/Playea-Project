@@ -5,39 +5,54 @@
 	<br>
 
 	{% if playas %}
-		{% for p in playas %}
-			<p><a href="/playa/{{ p.id }}/"> {{ p.nombre }} </a></p>
-		{% endfor %}
+		<table class="table table-hover">
+			<theader>
+				<tr>
+					<th> Nombre </th>
+					<th> Ubicación </th>
+				</tr>
+			</theader>
+			{% for p in playas %}
+				<tbody>
+					<tr>
+						<td> {{ p.nombre }} </td>
+						<td> {{ p.ubicacion }} </td>
+						<td><a class="btn" href="/playa/{{ p.id }}/"><li class="icon-search"></li> Ver </a></td>
+					</tr>	
+				</tbody>	
+			{% endfor %}
+		</table>
 	{% else %}
 		<h2> No se han agregado playas :( </h2>
 	{% endif %}
 
-	<br>
-
 	{% if playas %}
-		<a href="/playas/page/1"> << </a>
+		<div class="pagination">
+			<ul>
+				<li><a href="/playas/page/1"> << </a></li>
 
-		{% if playas.has_previous %}
-			<a href="/playas/page/{{ playas.previous_page_number }}/"> Ant </a>
-		{% else %}
-			<a href="#"> Ant </a>
-		{% endif %}
+				{% if playas.has_previous %}
+					<li><a href="/playas/page/{{ playas.previous_page_number }}/"> Ant </a></li>
+				{% else %}
+					<li><a href="#"> Ant </a></li>
+				{% endif %}
 
-		{% if playas.has_next %}
-			<a href="/playas/page/{{ playas.next_page_number }}/"> Sig </a>
-		{% else %}
-			<a href="#"> Sig </a>
-		{% endif %}
+				{% if playas.has_next %}
+					<li><a href="/playas/page/{{ playas.next_page_number }}/"> Sig </a></li>
+				{% else %}
+					<li><a href="#"> Sig </a></li>
+				{% endif %}
 
-		<a href="/playas/page/{{ playas.paginator.num_pages }}"> >> </a>
-		<br>
+				<li><a href="/playas/page/{{ playas.paginator.num_pages }}"> >> </a></li>
+			</ul>
+		</div>
 		<h4> Página {{ playas.number }} de {{ playas.paginator.num_pages }} </h4>
 	{% endif %}
 
-	<br><br>
+	<br>
 
 	{% if user.is_authenticated %}
-		<a href="{% url "vista_agregar_playa" %}"> Agregar Playa </a> 
+		<a class="btn btn-primary" href="{% url "vista_agregar_playa" %}"> Agregar Playa </a> 
 	{% endif %}
 
 {% endblock %}

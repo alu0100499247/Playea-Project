@@ -2,32 +2,84 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title> {% block title %} Pla-Yeah!! {% endblock %} </title>
-		{% block css %} <link rel="stylesheet" href="/media/css/estilo.css"> {% endblock %}
-	<head>
+		<title> {% block title %} Bienvenidos a Pla-Yeah!! {% endblock %} </title>
+		<link rel="stylesheet" href="/media/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="/media/bootstrap/css/bootstrap-responsive.css">
+		<script src="/media/js/jquery.js"></script>
+		<script src="/media/bootstrap/js/bootstrap.js"></script> 
+		<style type="text/css">
+			body{
+				padding-top: 60px;
+				padding-bottom: 40px;
+			}
+			.sidebar-nav{
+				padding: 9px 0;
+			}
+		</style>
+	</head>
 
 	<body>
-		<header>
-			<img src="/media/images/django.gif"/>
-			<h1> Pla-Yeah! Todo sobre nuestras Playas ;) </h1>
-			<nav>
-				<a href="{% url "vista_principal" %}"> Inicio </a>
-				<a href="/playas/page/1"> Playas </a>
-				<a href="{% url "vista_contacto" %}"> Contacto </a>
-				<a href="{% url "vista_about" %}"> Acerca de </a>
-				{% if user.is_authenticated %}
-					<a href="{% url "vista_logout" %}"> Cerrar Sesion </a>
-				{% else %}
-					<a href="{% url "vista_login" %}"> Iniciar Sesion </a>
-				{% endif %}
-			</nav>
-		</header>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<a class="brand" href="{% url "vista_principal" %}"> Pla-Yeah! </a>
+				<ul class="nav">
+					<li><a href="/playas/page/1"> Playas </a></li>
+					<li><a href="{% url "vista_contacto" %}"> Contacto </a></li>
+					<li><a href="{% url "vista_about" %}"> Acerca de </a></li>
+					{% if user.is_authenticated %}
+						<li><a href="{% url "vista_logout" %}"> Cerrar Sesion </a></li>
+					{% else %}
+						<li><a href="{% url "vista_login" %}"> Iniciar Sesion </a></li>
+					{% endif %}
+				</ul>	
+			</div><!--/inner-->
+		</div><!--/navbar-->
 
-		<section>
-			{% block content %}
+		<div class="container-fluid">
+
+			<div class="row-fluid">
+				<div class="span9">	
+					<div class="hero-unit">
+						{% block content %}
+
+						{% endblock %}
+					</div><!--/hero-unit-->
+			</div><!--/row-fluid-->
+
+			{% if user.is_authenticated %}
+				<div class="span3">
+					<div class="well sidebar-nav">
+						<ul class="nav nav-list">
+							<li class="nav-header"> Usuario on-line </li>
+							<p align="center">
+								Usuario {{ user.username }}
+							</p>
+							{% if user.get_profile.photo %}
+								<center><img align="center" src="/media/{{ user.get_profile.photo }}" width="100px" heigth="100px"/></center>
+							{% endif %}
+						</ul>
+					</div><!--/well-->
+				</div><!--/span3-->
+			{% endif %}
 			
-			{% endblock %}
-		</section>
+			<div class="span3">
+				<div class="well sidebar-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header"> Últimas Playas </li>
+						<br>
+						<p align="justify">
+							Últimas playas añadidas...
+						</p>
+					</ul>
+				</div><!--/well-->
+				<img src="/media/images/django.gif"/>
+			</div><!--/span3-->
+
+		</div><!--/container-fluid-->
+
+		<footer>
+			<p>&copy; Open Project Pla-Yeah 2014 </p>
+		</footer>
+
 	</body>
 </html>
-

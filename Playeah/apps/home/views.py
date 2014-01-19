@@ -17,7 +17,7 @@ def about_view(request):
 
 def playas_view(request, pagina):
 	playita = playa.objects.filter(status=True) # Select * from Playeah_playas where status = True
-	paginator = Paginator(playita, 1)			# Playas por pagina
+	paginator = Paginator(playita, 5)			# Playas por pagina
 	try:
 		page = int(pagina)						# Pasamos la variable pagina a entero
 	except:
