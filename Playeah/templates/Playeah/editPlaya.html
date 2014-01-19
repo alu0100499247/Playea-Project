@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Editar Playa {% endblock %}
+{% block content %}
+	<div class="row">
+		<div class="span6">
+			<form action="." method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<button class="btn btn-primary" type="submit"> Guardar </button>
+				<button class="btn btn-primary" type="reset"> Limpiar </button>
+			</form>
+			<a class="btn btn-primary" href="/playas/page/1"> Regresar a las Playas </a>
+		</div>
+		<div class="span6">
+			<img src="/media/{{ playa.imagen }}"/>
+		</div>
+	</div>
+{% endblock %}
