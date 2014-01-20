@@ -3,9 +3,7 @@
 {% block content %}
 	<form action="." method="POST">
 		{% csrf_token %}
-		{{ mensaje }}
 		{{ form.as_p }}
-		<button class="btn btn-primary"> Acceder </button>
-		<h5>Registrate <a href="/registro/">aqui</a></h5>
+		<button class="btn btn-primary"> Registrar </button>
 	</form>
 {% endblock %}

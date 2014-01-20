@@ -7,7 +7,6 @@ class UserProfile(models.Model):
 		ruta = "MultimediaData/Users/%s/%s"%(self.user.username,filename)
 		return ruta
 
-
 	user 	= models.OneToOneField(User)
 	photo	= models.ImageField(upload_to=url)
 	vivo	= models.CharField(max_length=100)

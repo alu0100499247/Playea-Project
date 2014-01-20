@@ -42,6 +42,7 @@
 					<li><a href="/playas/page/1"> Playas </a></li>
 					<li><a href="{% url "vista_contacto" %}"> Contacto </a></li>
 					<li><a href="{% url "vista_about" %}"> Acerca de </a></li>
+					<li><a href="{% url "vista_registro" %}"> Regístrate </a></li>
 					{% if user.is_authenticated %}
 						<li><a href="{% url "vista_logout" %}"> Cerrar Sesion </a></li>
 					{% else %}
