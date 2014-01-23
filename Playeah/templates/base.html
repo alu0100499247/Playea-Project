@@ -74,6 +74,8 @@
 								</p>
 								{% if user.get_profile.photo %}
 									<center><img align="center" src="/media/{{ user.get_profile.photo }}" width="100px" heigth="100px"/></center>
+								{% else %}
+									<center><img src="/media/images/user.jpg" width="100px" heigth="100px"/></center>
 								{% endif %}
 							</ul>
 						</div><!--/well-->
@@ -91,7 +93,7 @@
 			</div><!--/row-fluid-->
 
 			<footer>
-				<p>&copy; Open Project Pla-Yeah 2014 </p>
+				<p>&copy; Open Project Pla-Yeah 2014. Versión Django: {{ django_version }} </p>
 			</footer>
 
 		</div><!--/container-fluid-->
