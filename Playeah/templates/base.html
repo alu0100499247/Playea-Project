@@ -34,7 +34,7 @@
 		</script>
 	</head>
 
-	<body>
+	<body background="media/images/7.jpg">
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
 				<a class="brand" href="{% url "vista_principal" %}"> Pla-Yeah! </a>
@@ -54,48 +54,48 @@
 
 		<div class="container-fluid">
 			<div class="row-fluid">
-
-				<div class="span9">	
-					<div class="hero-unit">
+				<div class="span9">
+					<div class="hero-unit">	
 						{% block content %}
-
 						{% endblock %}
-					</div><!--/hero-unit-->
-				</div><!--/span9-->	
+					</div>
+			</div><!--/span9-->	
 
-				<div class="span3">
+			<div class="span3">
 
-					{% if user.is_authenticated %}
-						<div class="well sidebar-nav">
-							<ul class="nav nav-list">
-								<li class="nav-header"> Usuario on-line </li>
-								<p align="center">
-									Usuario {{ user.username }}
-								</p>
-								{% if user.get_profile.photo %}
-									<center><img align="center" src="/media/{{ user.get_profile.photo }}" width="100px" heigth="100px"/></center>
-								{% else %}
-									<center><img src="/media/images/user.jpg" width="100px" heigth="100px"/></center>
-								{% endif %}
-							</ul>
-						</div><!--/well-->
-					{% endif %}
-
+				{% if user.is_authenticated %}
 					<div class="well sidebar-nav">
-						<ul class="nav nav-list" id="PlayasNuevas">
-							<li class="nav-header"> Últimas Playas </li>
-							
+						<ul class="nav nav-list">
+							<li class="nav-header"> Usuario on-line </li>
+							<p align="center">
+								Usuario {{ user.username }}
+							</p>
+							{% if user.get_profile.photo %}
+								<center><img align="center" src="/media/{{ user.get_profile.photo }}" width="100px" heigth="100px"/></center>
+							{% else %}
+								<center><img src="/media/images/user.jpg" width="100px" heigth="100px"/></center>
+							{% endif %}
+							<br>
+							<center><a class="btn btn-primary" href="#"><li class="icon-edit"></li> Editar Perfil </a></center>
 						</ul>
 					</div><!--/well-->
-					<img src="/media/images/django.gif"/>
+				{% endif %}
+			</div>
+			<div class="span3">
+				<div class="well sidebar-nav">
+					<ul class="nav nav-list" id="PlayasNuevas">
+						<li class="nav-header"> Últimas Playas </li>
+						
+					</ul>
+				</div><!--/well-->
+				<img src="/media/images/django.gif"/>
 
-				</div><!--/span3-->
-			</div><!--/row-fluid-->
+			</div><!--/span3-->
+		</div><!--/row-fluid-->
 
-			<footer>
-				<p>&copy; Open Project Pla-Yeah 2014. Versión Django: {{ django_version }} </p>
-			</footer>
+		<footer>
+			<p>&copy; Open Project Pla-Yeah 2014. Versión Django: {{ django_version }} </p>
+		</footer>
 
-		</div><!--/container-fluid-->
 	</body>
 </html>
