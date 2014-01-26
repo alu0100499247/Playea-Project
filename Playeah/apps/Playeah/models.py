@@ -51,7 +51,7 @@ class playa(models.Model):
 	categorias	= models.ManyToManyField(categoria,null=True,blank=True)
 	deportes	= models.ManyToManyField(deporte,null=True,blank=True)
 	cercanias	= models.ManyToManyField(cercania,null=True,blank=True)
-	banderas	= models.OneToOneField(bandera,null=True,blank=True)
+	banderas	= models.ManyToManyField(bandera,null=True,blank=True)
 
 	def __unicode__(self):
 		return self.nombre

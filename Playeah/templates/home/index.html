@@ -1,14 +1,46 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block title %} Bienvenidos a Pla-Yeah! {% endblock %}
 {% block content %} 
-	<br>
-	<p> Esta es la pagina principal de la aplicacion. </p>
 
-	{% if user.is_authenticated %}
-		<p> Bienvenido {{ user.username }} </p>
-		{% if user.get_profile.photo %}
-			<img src="/media/{{ user.get_profile.photo }}" width="100px" heigth="100px"/>
-		{% endif %}
-	{% endif %} 
+	<center><h2><em> Bienvenido a </em></h2></center>
+	<center><h1><em> Pla-Yeah! </em></h1></center>
+	<br>
+	<div class="row-fluid">
+		<div class="span4">
+			<center><img src="/media/images/8.jpg" width="500px" heigth="500px"/></center>
+		</div>
+		<div class="span4">
+			<center><img src="/media/images/9.jpg" width="500px" heigth="500px"/></center>
+		</div>
+		<div class="span4">
+			<center><img src="/media/images/10.jpg" width="500px" heigth="500px"/></center>
+		</div>
+	</div>	
+	<br>
+	<div class="row-fluid">
+		<div class="span4">
+			<center><a class="btn btn-info" href="/playas/page/1"><i class="icon-share-alt"></i> Playas </a></center>
+		</div>
+		<div class="span4">
+			<center><a class="btn btn-info" href="{% url "vista_contacto" %}"><i class="icon-envelope"></i> Contacto </a></center>
+		</div>
+		<div class="span4">
+			<center><a class="btn btn-info" href="{% url "vista_about" %}"><i class="icon-info-sign"></i> Acerca de Pla-Yeah! </a></center>
+		</div>
+	</div>	
+	<br><br>
+	<div class="row-fluid">
+		<div class="span7">
+			<p> Pla-Yeah es una aplicación web en la que podrás conocer todo acerca de las playas canarias para que disfrutes al máximo de nuestras costas. Para cualquier duda que tengas puedes contactar con nostros en la zona de contacto y si quieres conocer más acerca de este proyecto prueba a visitar la zona dedicada al proyecto Pla-Yeah. <p><br>
+			<p> Si quieres formar parte de nuestra comunidad regístrate ya, y disfruta de una expeeriencia inolvidable. Si ya estas registrado, puedes iniciar sesión y empezar a aportar tu granito de arena!! </p><i class="icon-thumbs-up"></i>
+		</div>
+		<div class="span5">
+			<br>
+			<center><a class="btn btn-large btn-block btn-success" href="{% url "vista_registro" %}"><i class="icon-user"></i> Regístrate </a></center>
+			<center><a class="btn btn-large btn-block btn-primary" href="{% url "vista_login" %}"><i class="icon-check"></i> Inicia Sesión </a></center><br>
+			<center><img src="/media/images/logo1.jpg" width="200px" heigth="200px"/></center><br>
+			<center><img src="/media/images/logo2.jpg" width="200px" heigth="200px"/></center>
+		</div>
+	</div>
 
 {% endblock %} 
