@@ -83,7 +83,7 @@ def SinglePlaya_view(request, id_playa):
 	categoria = playita.categorias.all()
 	deporte = playita.deportes.all()
 	cercania = playita.cercanias.all()
-	bandera = playita.banderas
+	bandera = playita.banderas.all()
 	ctx = {'playa':playita,'categorias':categoria,'deportes':deporte,'cercanias':cercania,'banderas':bandera}
 	return render_to_response('home/SinglePlaya.html',ctx,context_instance=RequestContext(request))
 

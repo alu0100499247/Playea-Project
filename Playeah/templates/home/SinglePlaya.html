@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block title %} Nuestras Playas {% endblock %}
 {% block content %}
 
@@ -33,7 +33,9 @@
 	{% if banderas %}	
 		<div class="span2">
 			<h5> Bandera: </h5>
-			<span class="label label-info"> {{ playa.banderas }} </span>
+			{% for x in banderas %}
+				<span class="label label-info"> {{ x.nombre }} </span>
+			{% endfor %}
 		</div>
 	{% endif %}
 	<br><br><br><br><br>
